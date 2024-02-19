@@ -36,6 +36,12 @@ Console.WriteLine($"We have {sum} items in inventory.");
 */
 
 
+/*
+  The following code creates five random OrderIDs
+  to test the fraud detection process.  OrderIDs 
+  consist of a letter from A to E, and a three
+  digit number. Ex. A123.
+*/
 string[] orderIDs = { "B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179" };
 
 foreach (string orderID in orderIDs)
