@@ -67,6 +67,8 @@ else
 }
 Console.WriteLine($"Measurement (w/ offset): {50 + result}");
 */
+
+/*
 string value = "bad";
 int result = 0;
 if (int.TryParse(value, out result))
@@ -80,3 +82,28 @@ else
 
 if (result > 0)
     Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+*/
+
+
+// ! Exercise - Complete a challenge to combine string array values as strings and as integers
+
+string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+
+decimal numericTotal = 0m;
+string message = "";
+
+foreach (var value in values)
+{
+    decimal number; // stores the TryParse "out" value
+    if (decimal.TryParse(value, out number))
+    {
+        numericTotal += number;
+    }
+    else
+    {
+        message += value;
+    }
+}
+
+Console.WriteLine($"Message: {message}");
+Console.WriteLine($"Total: {numericTotal}");
