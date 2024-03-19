@@ -76,29 +76,82 @@
 
 
 
-// Palindrome exercise - Return Booleans from Methods
-string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
+//   Palindrome exercise - Return Booleans from Methods
+//
+//
+// string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
+// 
+// Console.WriteLine("Is it a palindrome?");
+// foreach (string word in words)
+// {
+//     Console.WriteLine($"{word}: {IsPalindrome(word)}");
+// }
+// 
+// bool IsPalindrome(string word)
+// {
+//     int start = 0;
+//     int end = word.Length - 1;
+// 
+//     while (start < end)
+//     {
+//         if (word[start] != word[end])
+//         {
+//             return false;
+//         }
+//         start++;
+//         end--;
+//     }
+// 
+//     return true;
+// }
 
-Console.WriteLine("Is it a palindrome?");
-foreach (string word in words)
+
+
+
+// Coins to make change - Return ARRAYS from methods
+
+int target = 30;
+int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+int[,] result = TwoCoins(coins, target);
+
+if (result.Length == 0)
 {
-    Console.WriteLine($"{word}: {IsPalindrome(word)}");
+    Console.WriteLine("No two coins make change");
+}
+else
+{
+    Console.WriteLine("Change found at positions:");
+    for (int i = 0; i < result.GetLength(0); i++)
+    {
+        if (result[i, 0] == -1)
+        {
+            break;
+        }
+        Console.WriteLine($"{result[i, 0]},{result[i, 1]}");
+    }
 }
 
-bool IsPalindrome(string word)
+int[,] TwoCoins(int[] coins, int target)
 {
-    int start = 0;
-    int end = word.Length - 1;
+    int[,] result = { { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 } };
+    int count = 0;
 
-    while (start < end)
+    for (int curr = 0; curr < coins.Length; curr++)
     {
-        if (word[start] != word[end])
+        for (int next = curr + 1; next < coins.Length; next++)
         {
-            return false;
+            if (coins[curr] + coins[next] == target)
+            {
+                result[count, 0] = curr;
+                result[count, 1] = next;
+                count++;
+            }
+            if (count == result.GetLength(0))
+            {
+                return result;
+            }
         }
-        start++;
-        end--;
     }
 
-    return true;
+    return (count == 0) ? new int[0, 0] : result;
 }
