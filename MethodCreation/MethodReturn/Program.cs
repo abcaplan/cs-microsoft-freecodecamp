@@ -48,28 +48,57 @@
 // }
 
 
-string input = "there are snakes at the zoo";
+// string input = "there are snakes at the zoo";
+// 
+// Console.WriteLine(input);
+// Console.WriteLine(ReverseSentence(input));
+// 
+// string ReverseSentence(string input)
+// {
+//     string result = "";
+//     string[] words = input.Split(" ");
+//     foreach (string word in words)
+//     {
+//         result += ReverseWord(word) + " ";
+//     }
+//     return result.Trim();
+// }
+// 
+// string ReverseWord(string word)
+// {
+//     string result = "";
+//     for (int i = word.Length - 1; i >= 0; i--)
+//     {
+//         result += word[i];
+//     }
+//     return result;
+// }
 
-Console.WriteLine(input);
-Console.WriteLine(ReverseSentence(input));
 
-string ReverseSentence(string input)
+
+// Palindrome exercise - Return Booleans from Methods
+string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
+
+Console.WriteLine("Is it a palindrome?");
+foreach (string word in words)
 {
-    string result = "";
-    string[] words = input.Split(" ");
-    foreach (string word in words)
-    {
-        result += ReverseWord(word) + " ";
-    }
-    return result.Trim();
+    Console.WriteLine($"{word}: {IsPalindrome(word)}");
 }
 
-string ReverseWord(string word)
+bool IsPalindrome(string word)
 {
-    string result = "";
-    for (int i = word.Length - 1; i >= 0; i--)
+    int start = 0;
+    int end = word.Length - 1;
+
+    while (start < end)
     {
-        result += word[i];
+        if (word[start] != word[end])
+        {
+            return false;
+        }
+        start++;
+        end--;
     }
-    return result;
+
+    return true;
 }
